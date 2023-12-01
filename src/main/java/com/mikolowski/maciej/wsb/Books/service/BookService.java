@@ -26,6 +26,9 @@ public class BookService {
         Book body = bookRepository.findById(id)
                 .orElse(new Book());
         HttpStatus status = HttpStatus.OK;
+        if (body.getId() == null) {
+            status = HttpStatus.NOT_FOUND;
+        }
         return new ResponseEntity<>(body, status);
     }
 

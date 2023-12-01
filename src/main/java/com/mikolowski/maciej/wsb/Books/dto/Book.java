@@ -27,7 +27,11 @@ public class Book {
     private Float price;
 
     public Float getPrice() {
-        return (Math.round(price * 100f) / 100f);
+        if (price != null) {
+            return (Math.round(price * 100f) / 100f);
+        }
+
+        return 0f;
     }
 
     public Float setPrice(Float price) {
