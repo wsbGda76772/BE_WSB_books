@@ -1,5 +1,6 @@
 package com.mikolowski.maciej.wsb.Books.service;
 
+import com.mikolowski.maciej.wsb.Books.dao.BookRepository;
 import com.mikolowski.maciej.wsb.Books.dto.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,33 +13,49 @@ import java.util.Optional;
 @Service
 public class BookService {
 
+    @Autowired
+    BookRepository bookRepository;
+
     public ResponseEntity<List<Book>> findAll() {
-        List<Book> body = List.of();
+        List<Book> body = bookRepository.findAll();
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(body, status);
     }
 
     public ResponseEntity<Book> findById(Integer id) {
-        Book body = new Book();
+        Book body = bookRepository.findById(id)
+                .orElse(new Book());
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(body, status);
     }
 
     public ResponseEntity<Book> addBook(Book book) {
-        Book body = book;
+        Book body = bookRepository.save(book);
         HttpStatus status = HttpStatus.CREATED;
         return new ResponseEntity<>(body, status);
     }
 
     public ResponseEntity<Book> update(Book book) {
-        Book body = book;
         HttpStatus status = HttpStatus.OK;
-        return new ResponseEntity<>(body, status);
+        Optional<Book> bookInDb = bookRepository.findById(book.getId());
+        if (bookInDb.isPresent()) {
+            Book body = bookRepository.save(book);
+            return new ResponseEntity<>(body, status);
+        } else {
+            status = HttpStatus.NO_CONTENT;
+            return new ResponseEntity<>(new Book(), status);
+        }
     }
 
     public ResponseEntity<Book> delete(Integer id) {
-        Book body = new Book();
         HttpStatus status = HttpStatus.OK;
-        return new ResponseEntity<>(body, status);
+        Optional<Book> bookInDb = bookRepository.findById(id);
+        if (bookInDb.isPresent()) {
+            bookRepository.delete(bookInDb.get());
+            return new ResponseEntity<>(bookInDb.get(), status);
+        } else {
+            status = HttpStatus.NO_CONTENT;
+            return new ResponseEntity<>(null, status);
+        }
     }
 }
