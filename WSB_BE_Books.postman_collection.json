@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "411d6c80-a6a4-4029-9719-9f14208ee9b6",
+		"name": "WSB_BE_Books",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6983474"
+	},
+	"item": [
+		{
+			"name": "Unauthorized",
+			"item": [
+				{
+					"name": "Add Book - unauthorized",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Harry Potter i Kamien Filozoficzny\",\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/books",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book - unauthorized",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/books/:id",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book - unauthorized",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"title\": \"Nowy tytuł\",\n    \"author\": \"Nowy autor\",\n    \"price\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/books",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/v1/books",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Existing Book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/v1/books/:id",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"books",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Not Book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/v1/books/:id",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"books",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "-2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book - correct body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Harry Potter i Kamien Filozoficzny\",\n    \"author\": \"J. K. Rowling\",\n    \"price\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/v1/books",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book - incorrect body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Harry Potter i Kamien Filozoficzny\",\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/v1/books",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book - authorized",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/v1/books/:id",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"books",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book - not existing Book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/v1/books/:id",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"books",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"title\": \"Nowy tytuł\",\n    \"author\": \"Nowy autor\",\n    \"price\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/v1/books",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book - incorrect body",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"title\": \"Nowy tytuł\",\n    \"price\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/v1/books",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "user",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "password",
+			"value": "password",
+			"type": "string"
+		},
+		{
+			"key": "url",
+			"value": "http://localhost:8080/",
+			"type": "string"
+		}
+	]
+}
