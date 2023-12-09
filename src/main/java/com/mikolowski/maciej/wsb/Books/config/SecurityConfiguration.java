@@ -26,11 +26,12 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests((authRequest) -> {
             authRequest.requestMatchers(new RegexRequestMatcher("/api/v1/books*", "GET"),
                     new RegexRequestMatcher("/swagger-ui*", "GET"),
-                    new RegexRequestMatcher("/login", "POST")).permitAll();
+                    new RegexRequestMatcher("/login", "POST"),
+                    new RegexRequestMatcher("/login", "GET")).permitAll();
             authRequest.requestMatchers(new RegexRequestMatcher("/api/v1/books", "POST"),
                     new RegexRequestMatcher("/api/v1/books", "PUT"),
                     new RegexRequestMatcher("/api/v1/books", "DELETE")).authenticated();
-            authRequest.anyRequest().permitAll();
+            authRequest.anyRequest().authenticated();
         }).httpBasic(withDefaults())
             .formLogin(withDefaults());
         return http.build();
