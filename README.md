@@ -18,6 +18,8 @@ I've added simple Swagger to present available:
     <li>returned status codes.</li> 
 </ul>
 
+There is also collection which can be imported to Postman where you can test sample requests.
+
 ## Database
 Database used for the project is called h2 and is initialized during start of the whole application. There is no need to set up any local database server.
 
