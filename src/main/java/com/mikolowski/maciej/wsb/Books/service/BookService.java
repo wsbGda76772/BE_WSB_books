@@ -57,7 +57,7 @@ public class BookService {
             bookRepository.delete(bookInDb.get());
             return new ResponseEntity<>(bookInDb.get(), status);
         } else {
-            status = HttpStatus.NO_CONTENT;
+            status = HttpStatus.NOT_FOUND;
             return new ResponseEntity<>(null, status);
         }
     }
