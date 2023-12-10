@@ -8,6 +8,10 @@ To build executable jar file use command printed below on the root folder of the
 
 ```mvn clean install```
 
+To run the project you have to run this command (please, check the actual version of the application to set proper suffix for the jar file):
+
+```java -jar target/Books-0.0.2-SNAPSHOT.jar```
+
 ## Available endpoints and format of payload
 http://localhost:8080/swagger-ui.html - available without authentication
 
