@@ -106,9 +106,9 @@ public class BookController {
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Ok - returns updated book object", content =
             { @Content(mediaType = "application/json") }),
-        @ApiResponse(responseCode = "204", description = "No content - returns empty book object", content =
-            { @Content(mediaType = "application/json") }),
         @ApiResponse(responseCode = "'401", description = "Unauthorized - you don't have access to this operation"),
+        @ApiResponse(responseCode = "404", description = "No content - returns empty book object", content =
+            { @Content(mediaType = "application/json") }),
         @ApiResponse(responseCode = "500", description = "Internal server error - returns empty book object", content =
             { @Content(mediaType = "application/json") })}
     )
